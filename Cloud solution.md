@@ -106,12 +106,11 @@ Create RDS
 
 - Create Database, select free tier was used
 - Ensure the datalayer SG and DB Subnet group was selected
-  ![](screenshots/rds_creation.png)
+ ![Project15datalayer](https://user-images.githubusercontent.com/41236641/166826549-2b0187ec-0af8-4c34-818e-17d380f0a80a.PNG)
+
 - Ensure the KMS created previously was applied in the setup:
-  ![](screenshots/rds_configuration.png)
+  ![Project15kms](https://user-images.githubusercontent.com/41236641/166826575-0635c87e-2017-4c6c-a204-89c560aae404.PNG)
 - Note down the db credentials
-
-
 
 ### AMI Setup
 - Launch a CentOS Instance and pre-install it with defaults requirements
@@ -122,9 +121,7 @@ Create RDS
   ```
 
 - Navigate to ```Instance > Actions > Images and Templates > Create Image ``` to create the AMI for the instances
-  ![](screenshots/ami.png)
-
-  ![](screenshots/ami_2.png)
+ ![Project15ami](https://user-images.githubusercontent.com/41236641/166826476-c10c48a9-8d88-4571-b0b0-bd9b5c177246.PNG)
 
 
 ### Templates Setup for Bastion and Webservers
@@ -286,7 +283,6 @@ Create a Target Group for Wordpress, Bastion and Tooling.
    ![](screenshots/target_group_healthchecks.png)
 
 Create an Automatic Scaling group and select desired capacity the matching launch template and target groups for the Wordpress, Bastion and Tooling.
-- ![](screenshots/asgs_tooling_wordpress.png)
 
 ### Create Internal Load Balancer
 
@@ -298,14 +294,14 @@ Navigate to the Load balancers and create an Internal Load Balancer
   - select the wordpress target group
   - select listener port https
   - Select certificate issued earlier from ACM
-    ![](screenshots/internal_alb.png)
+   ![Project15ALB](https://user-images.githubusercontent.com/41236641/166826290-0106a59f-ec85-4f6e-bb59-9128abd235e1.PNG)
+
 
 Configure the Internal Load Balancer 
   - Navigate to Listeners
   - Click on View/Edit rules for the target groups
   - Click on the Plus (+) icon to add a new rule.
   - Add the host header rule to map host to the specific target group, such that tooling.domain.com links to the tooling target groups and every other rule leads to the wordpress target groups
-    ![](screenshots/internal_alb_rules.png)
 
 
 
@@ -383,7 +379,8 @@ Setup Nginx Launch Template
 - Launch an Instance from the Launch Template and verify that all configurations are reflected
 
 - All launch templates should be as shown: 
-  ![](screenshots/launch_templates.png)
+  ![LaunchTemplate](https://user-images.githubusercontent.com/41236641/166826127-7b7e5ee3-5181-4c22-9ae7-4933c78807a3.PNG)
+
 
 - Create a Target Group for Nginx.
   - Ensure HTTPS protocol 443 for Nginx
@@ -392,12 +389,14 @@ Setup Nginx Launch Template
   - Ensure that the instances return healthy
 
 - All target groups should be as shown:
-  ![](screenshots/target_groups.png)
+  ![targetgroup](https://user-images.githubusercontent.com/41236641/166826086-de595a6b-1a62-45f3-a4c3-70a7e3e89514.PNG)
+
 
 - Create an Automatic Scaling group and select desired capacity the matching launch template and target groups for Nginx.
 
 - All ASGs should be as shown below:
-  ![](screenshots/asgs.png)
+![P15Autoscalinggroup](https://user-images.githubusercontent.com/41236641/166826025-1d56fc29-dade-4daa-8295-84cd2abb7640.PNG)
+
 
 
 ### Setup External LoadBalancer
@@ -410,18 +409,15 @@ Setup Nginx Launch Template
   - select the nginx target group
   - select listener port https
   - Select certificate issued earlierfrom ACM
-    ![](screenshots/ext_alb.png)
 
 - Configure Route 53 and set routes to the External Load Balancer
-  - Configure routes to tooling.<your_domain_name>.com as an alias to the External Load balancer, in this case, tooling.onelovetooling.tk
-    ![](screenshots/r53.png)
-  - Configure routes to wordpress.<your_domain_name>.com as an alias to the External Load balancer, in this case, wordpress.onelovetooling.tk
-    ![](screenshots/r53_fullsettings.png)
+  - Configure routes to tooling.<your_domain_name>.com as an alias to the External Load balancer, in this case, tooling.timiphoto.tk
+  - Configure routes to wordpress.<your_domain_name>.com as an alias to the External Load balancer, in this case, wordpress.timiphoto.tk
+![Project15domain](https://user-images.githubusercontent.com/41236641/166825943-3a46a886-260a-4beb-b1ce-bf1e30460852.PNG)
 
 
 ### Test Connectivity
 - Navigate to the tooling website by prefixing the domain with tooling and confirm that the page loads and is accessible:
-  ![](screenshots/tooling_page.png)
-
 - Navigate to the wordpress website with just the domain name,complete  and confirm that the page loads and is accessible:
-  ![](screenshots/wordpress_site_2.png)
+ ![Project15tooling](https://user-images.githubusercontent.com/41236641/166825655-2ae1a3cc-4f8f-4237-81a3-cf6f5270e9d5.PNG)
+
