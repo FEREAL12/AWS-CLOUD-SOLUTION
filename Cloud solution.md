@@ -414,6 +414,8 @@ Setup Nginx Launch Template
   - Configure routes to tooling.<your_domain_name>.com as an alias to the External Load balancer, in this case, tooling.timiphoto.tk
   - Configure routes to wordpress.<your_domain_name>.com as an alias to the External Load balancer, in this case, wordpress.timiphoto.tk
 ![Project15domain](https://user-images.githubusercontent.com/41236641/166825943-3a46a886-260a-4beb-b1ce-bf1e30460852.PNG)
+![Project15wordpress](https://user-images.githubusercontent.com/41236641/166826857-716f6e4d-d7f8-4c41-88c5-c7cc1d33fd14.PNG)
+![Project15M](https://user-images.githubusercontent.com/41236641/166826915-68332072-01e3-42ab-863e-209bb1a3e52d.PNG)
 
 
 ### Test Connectivity
